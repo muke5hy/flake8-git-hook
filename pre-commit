@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+OUTPUT="$(git diff | flake8 --diff)"
+
+if [ -z "$OUTPUT" ]
+then
+      echo "================== You are awesome ===================="
+      exit 0
+else
+      echo ""
+      echo "================== Your code stinks, Fix them ===================="
+      echo ""
+      echo "${OUTPUT}"
+      exit 1
+fi
